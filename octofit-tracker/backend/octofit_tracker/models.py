@@ -3,6 +3,7 @@ from djongo import models
 
 class User(models.Model):
     name = models.CharField(max_length=100)
+    username = models.CharField(max_length=100, unique=True, default='')
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=100)
 
@@ -40,6 +41,7 @@ class Activity(models.Model):
 class Leaderboard(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='leaderboard_entries')
     score = models.IntegerField(default=0)
+    total_calories = models.IntegerField(default=0)
 
     class Meta:
         db_table = 'leaderboard'
@@ -53,6 +55,8 @@ class Workout(models.Model):
     description = models.TextField()
     duration = models.FloatField(help_text='Duration in minutes')
     intensity = models.CharField(max_length=50)
+    workout_type = models.CharField(max_length=100, default='General')
+    calories_burned = models.IntegerField(default=0)
 
     class Meta:
         db_table = 'workouts'

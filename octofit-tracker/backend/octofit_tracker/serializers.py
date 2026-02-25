@@ -24,10 +24,15 @@ class ActivitySerializer(serializers.ModelSerializer):
 
 class LeaderboardSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
+    team = serializers.SerializerMethodField()
 
     class Meta:
         model = Leaderboard
         fields = '__all__'
+
+    def get_team(self, obj):
+        team = obj.user.teams.first()
+        return team.name if team else None
 
 
 class WorkoutSerializer(serializers.ModelSerializer):
