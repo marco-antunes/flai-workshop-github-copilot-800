@@ -5,7 +5,7 @@ applyTo: "octofit-tracker/backend/**"
 
 ## Django Backend App structure
 
-### settings.py
+### settings.py 
 
 Should always contain the following:
 
