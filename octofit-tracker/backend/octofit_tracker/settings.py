@@ -10,10 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Codespace URL support
+CODESPACE_NAME = os.environ.get('CODESPACE_NAME', '')
+CODESPACE_HOST = f'{CODESPACE_NAME}-8000.app.github.dev' if CODESPACE_NAME else ''
 
 # CORS settings
 CORS_ALLOW_ALL_ORIGINS = True
@@ -30,7 +35,18 @@ SECRET_KEY = 'django-insecure-w0gwi+0$q+*5os)!6o++*6w!g&e6^91o%n^b23#6%0n__^gt!u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.app.github.dev']
+if CODESPACE_HOST:
+    ALLOWED_HOSTS.append(CODESPACE_HOST)
+
+# Trust the codespace HTTPS proxy and localhost
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000']
+if CODESPACE_HOST:
+    CSRF_TRUSTED_ORIGINS.append(f'https://{CODESPACE_HOST}')
+
+# Handle HTTPS behind GitHub Codespaces proxy
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # Application definition
