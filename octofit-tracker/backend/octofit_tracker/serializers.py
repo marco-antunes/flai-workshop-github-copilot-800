@@ -6,6 +6,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
+        extra_kwargs = {'password': {'write_only': True}}
 
 
 class TeamSerializer(serializers.ModelSerializer):
@@ -17,6 +18,8 @@ class TeamSerializer(serializers.ModelSerializer):
 
 
 class ActivitySerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+
     class Meta:
         model = Activity
         fields = '__all__'

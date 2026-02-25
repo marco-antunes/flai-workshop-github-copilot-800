@@ -53,7 +53,7 @@ function Activities() {
                 {activities.map((activity, index) => (
                   <tr key={activity.id}>
                     <td data-label="#">{index + 1}</td>
-                    <td data-label="User">{activity.user}</td>
+                    <td data-label="User"><strong>{activity.user?.name}</strong> <span className="badge bg-secondary ms-1">{activity.user?.username}</span></td>
                     <td data-label="Activity Type"><span className="badge bg-primary">{activity.activity_type}</span></td>
                     <td data-label="Duration">{activity.duration}</td>
                     <td data-label="Date">{activity.date}</td>
