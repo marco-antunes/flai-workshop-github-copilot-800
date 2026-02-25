@@ -1,0 +1,341 @@
+/* ============================================================
+   OctoFit Tracker – Global Styles
+   ============================================================ */
+
+/* ── Color palette ─────────────────────────────────────────── */
+:root {
+  --of-blue:        #0d6efd;
+  --of-cyan:        #0dcaf0;
+  --of-dark:        #0f1923;
+  --of-dark-nav:    #111827;
+  --of-card-bg:     #ffffff;
+  --of-page-bg:     #eef2f7;
+  --of-heading:     #0d1b2a;
+  --of-text:        #1e293b;
+  --of-muted:       #64748b;
+  --of-link:        #0d6efd;
+  --of-link-hover:  #0a58ca;
+  --of-success:     #198754;
+  --of-danger:      #dc3545;
+  --of-warning:     #ffc107;
+  --of-table-head:  #1e3a5f;
+  --of-table-row-hover: #dbeafe;
+  --of-table-stripe: #f1f5fd;
+  --of-btn-primary: #0d6efd;
+  --of-btn-hover:   #0a58ca;
+}
+
+/* ── Base ───────────────────────────────────────────────────── */
+body {
+  background-color: var(--of-page-bg);
+  color: var(--of-text);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ── Navigation ─────────────────────────────────────────────── */
+.navbar {
+  background-color: var(--of-dark-nav) !important;
+  border-bottom: 3px solid var(--of-blue);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-brand {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff !important;
+  letter-spacing: 0.03em;
+}
+
+.navbar-brand img {
+  border-radius: 50%;
+  border: 2px solid var(--of-cyan);
+  box-shadow: 0 0 8px rgba(13, 202, 240, 0.5);
+}
+
+.navbar .nav-link {
+  color: #c9d6e3 !important;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #ffffff !important;
+  background-color: var(--of-blue);
+}
+
+/* ── Headings ────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--of-heading);
+}
+
+.page-heading {
+  border-left: 5px solid var(--of-blue);
+  padding-left: 0.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--of-dark);
+  font-weight: 700;
+}
+
+/* ── Links ───────────────────────────────────────────────────── */
+a {
+  color: var(--of-link);
+}
+
+a:hover {
+  color: var(--of-link-hover);
+}
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+.btn-primary {
+  background-color: var(--of-btn-primary);
+  border-color: var(--of-btn-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--of-btn-hover);
+  border-color: var(--of-btn-hover);
+}
+
+.btn-outline-primary {
+  color: var(--of-btn-primary);
+  border-color: var(--of-btn-primary);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--of-btn-primary);
+  color: #fff;
+}
+
+/* ── Tables ──────────────────────────────────────────────────── */
+.octofit-table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.octofit-table thead th {
+  background-color: var(--of-table-head);
+  color: #e8f0fe;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--of-blue);
+}
+
+.octofit-table tbody tr:nth-child(odd) {
+  background-color: var(--of-table-stripe);
+}
+
+.octofit-table tbody tr:hover {
+  background-color: var(--of-table-row-hover);
+}
+
+.octofit-table td,
+.octofit-table th {
+  vertical-align: middle;
+  padding: 0.65rem 1rem;
+}
+
+/* ── Cards ───────────────────────────────────────────────────── */
+.octofit-card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+  background-color: var(--of-card-bg);
+}
+
+.octofit-card:hover {
+  box-shadow: 0 6px 20px rgba(13, 110, 253, 0.2);
+  transform: translateY(-2px);
+}
+
+.octofit-card .card-header {
+  background-color: var(--of-table-head) !important;
+  color: #e8f0fe !important;
+  border-radius: 10px 10px 0 0 !important;
+  font-size: 1rem;
+  font-weight: 600;
+  border-bottom: 2px solid var(--of-blue);
+}
+
+.octofit-card .card-footer {
+  background-color: #f8faff;
+  border-top: 1px solid #dee2ef;
+  border-radius: 0 0 10px 10px !important;
+}
+
+/* ── Hero / Welcome ──────────────────────────────────────────── */
+.hero-section {
+  background: linear-gradient(135deg, #0d1b2a 0%, #1e3a5f 50%, #0d6efd 100%);
+  color: white;
+  border-radius: 1rem;
+  padding: 3.5rem 2rem;
+  text-align: center;
+  margin-top: 1.5rem;
+  box-shadow: 0 6px 30px rgba(13, 110, 253, 0.35);
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.hero-section p {
+  font-size: 1.15rem;
+  color: #c9d6e3;
+}
+
+.hero-section .btn-light {
+  color: var(--of-blue);
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 0.4rem 1.2rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.hero-section .btn-light:hover {
+  background-color: var(--of-blue);
+  color: #ffffff;
+}
+
+/* ── Badges ──────────────────────────────────────────────────── */
+.badge-high   { background-color: var(--of-danger) !important; }
+.badge-medium { background-color: var(--of-warning) !important; color: #212529 !important; }
+.badge-low    { background-color: var(--of-success) !important; }
+
+/* ── Rank medals ─────────────────────────────────────────────── */
+.rank-1 { color: #f5c518; font-weight: bold; font-size: 1.1rem; }
+.rank-2 { color: #a8a9ad; font-weight: bold; font-size: 1.1rem; }
+.rank-3 { color: #cd7f32; font-weight: bold; font-size: 1.1rem; }
+
+/* ── Spinner ─────────────────────────────────────────────────── */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* ── Responsive tables ───────────────────────────────────────── */
+@media (max-width: 576px) {
+  .octofit-table thead {
+    display: none;
+  }
+  .octofit-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #dee2e6;
+  }
+  .octofit-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--of-muted);
+    margin-right: 1rem;
+  }
+}
+
+
+/* Navbar */
+.navbar-brand img {
+  border-radius: 50%;
+}
+
+.navbar .nav-link.active {
+  font-weight: bold;
+  border-bottom: 2px solid #0dcaf0;
+}
+
+/* Page headings */
+.page-heading {
+  border-left: 4px solid #0d6efd;
+  padding-left: 0.75rem;
+  margin-bottom: 1.5rem;
+  color: #212529;
+}
+
+/* Tables */
+.octofit-table thead th {
+  background-color: #212529;
+  color: #ffffff;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.octofit-table tbody tr:hover {
+  background-color: #e9f0ff;
+}
+
+.octofit-table td,
+.octofit-table th {
+  vertical-align: middle;
+}
+
+/* Cards */
+.octofit-card {
+  border: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.2s ease;
+}
+
+.octofit-card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+.octofit-card .card-header {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Hero / Welcome */
+.hero-section {
+  background: linear-gradient(135deg, #0d6efd 0%, #0dcaf0 100%);
+  color: white;
+  border-radius: 1rem;
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-top: 2rem;
+  box-shadow: 0 4px 20px rgba(13, 110, 253, 0.3);
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.hero-section p {
+  font-size: 1.15rem;
+  opacity: 0.9;
+}
+
+/* Badges */
+.badge-high   { background-color: #dc3545 !important; }
+.badge-medium { background-color: #ffc107 !important; color: #212529 !important; }
+.badge-low    { background-color: #198754 !important; }
+
+/* Rank medals */
+.rank-1 { color: gold;   font-weight: bold; }
+.rank-2 { color: silver; font-weight: bold; }
+.rank-3 { color: #cd7f32; font-weight: bold; }
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .octofit-table thead {
+    display: none;
+  }
+  .octofit-table td {
+    display: block;
+    text-align: right;
+  }
+  .octofit-table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+}
+

@@ -1,0 +1,44 @@
+from rest_framework import serializers
+from .models import User, Team, Activity, Leaderboard, Workout
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'
+        extra_kwargs = {'password': {'write_only': True}}
+
+
+class TeamSerializer(serializers.ModelSerializer):
+    members = UserSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Team
+        fields = '__all__'
+
+
+class ActivitySerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+
+    class Meta:
+        model = Activity
+        fields = '__all__'
+
+
+class LeaderboardSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+    team = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Leaderboard
+        fields = '__all__'
+
+    def get_team(self, obj):
+        team = obj.user.teams.first()
+        return team.name if team else None
+
+
+class WorkoutSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Workout
+        fields = '__all__'
