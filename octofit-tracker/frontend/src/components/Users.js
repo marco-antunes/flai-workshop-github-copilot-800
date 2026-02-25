@@ -16,8 +16,12 @@ function Users() {
   const [saveSuccess, setSaveSuccess] = useState(false);
 
   const fetchData = () => {
-    const usersUrl = `${API_BASE}/api/users/`;
-    const teamsUrl = `${API_BASE}/api/teams/`;
+    const usersUrl = process.env.REACT_APP_CODESPACE_NAME
+      ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/users/`
+      : 'http://localhost:8000/api/users/';
+    const teamsUrl = process.env.REACT_APP_CODESPACE_NAME
+      ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/teams/`
+      : 'http://localhost:8000/api/teams/';
     console.log('Fetching users from:', usersUrl);
     console.log('Fetching teams from:', teamsUrl);
     Promise.all([fetch(usersUrl).then(r => r.json()), fetch(teamsUrl).then(r => r.json())])
@@ -79,7 +83,10 @@ function Users() {
         ...(formData.password ? { password: formData.password } : {}),
       };
 
-      const userRes = await fetch(`${API_BASE}/api/users/${editingUser.id}/`, {
+      const base = process.env.REACT_APP_CODESPACE_NAME
+        ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev`
+        : 'http://localhost:8000';
+      const userRes = await fetch(`${base}/api/users/${editingUser.id}/`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userPayload),
@@ -90,7 +97,7 @@ function Users() {
       }
 
       // Assign team
-      await fetch(`${API_BASE}/api/users/${editingUser.id}/assign_team/`, {
+      await fetch(`${base}/api/users/${editingUser.id}/assign_team/`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ team_id: formData.team_id || null }),

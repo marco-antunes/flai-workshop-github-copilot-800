@@ -10,7 +10,9 @@ function Activities() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const url = `${API_BASE}/api/activities/`;
+    const url = process.env.REACT_APP_CODESPACE_NAME
+      ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/activities/`
+      : 'http://localhost:8000/api/activities/';
     console.log('Fetching activities from:', url);
     fetch(url)
       .then((res) => res.json())
